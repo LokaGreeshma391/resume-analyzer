@@ -27,7 +27,7 @@ An AI-powered resume analyzer built with **LangGraph** and **Next.js**.
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/YOURUSERNAME/resume-analyzer.git
+git clone https://github.com/LokaGreeshma391/resume-analyzer.git
 cd resume-analyzer
 ```
 
