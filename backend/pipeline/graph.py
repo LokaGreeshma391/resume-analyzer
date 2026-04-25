@@ -13,6 +13,7 @@ class ResumeState(TypedDict):
     job_description: str
     analysis: Optional[str]
     gaps: Optional[str]
+    match_score: Optional[int]
     path_decision: Optional[Literal["rewrite", "skip"]]
     enhanced_resume: Optional[str]
     job_suggestions: Optional[str]
@@ -42,6 +43,24 @@ Job Description:
 {state['job_description']}"""
     result = llm.invoke(prompt)
     return {**state, "gaps": result.content}
+def score_node(state: ResumeState) -> ResumeState:
+    llm = get_llm()
+    prompt = f"""You are a resume scoring expert.
+Based on this resume and job description, give a match score from 0 to 100.
+Only reply with a single integer number. Nothing else. No explanation.
+
+Resume:
+{state['resume']}
+
+Job Description:
+{state['job_description']}"""
+    result = llm.invoke(prompt).content.strip()
+    try:
+        score = int(''.join(filter(str.isdigit, result)))
+        score = max(0, min(100, score))
+    except:
+        score = 50
+    return {**state, "match_score": score}
 
 
 def evaluate_node(state: ResumeState) -> ResumeState:
@@ -107,13 +126,15 @@ def build_graph():
 
     builder.add_node("Analyze", analyze_node)
     builder.add_node("Match", match_node)
+    builder.add_node("Score", score_node)
     builder.add_node("Evaluate", evaluate_node)
     builder.add_node("Rewrite", rewrite_node)
     builder.add_node("Jobs", jobs_node)
 
     builder.set_entry_point("Analyze")
     builder.add_edge("Analyze", "Match")
-    builder.add_edge("Match", "Evaluate")
+    builder.add_edge("Match", "Score")
+    builder.add_edge("Score", "Evaluate")
     builder.add_conditional_edges(
         "Evaluate",
         lambda s: s["path_decision"],

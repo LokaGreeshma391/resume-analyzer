@@ -49,6 +49,7 @@ async def analyze(
         "run_id":          run_id,
         "analysis":        result["analysis"],
         "gaps":            result["gaps"],
+        "match_score":     result.get("match_score", 0),
         "enhanced_resume": result.get("enhanced_resume"),
         "job_suggestions": result.get("job_suggestions"),
     }

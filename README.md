@@ -1,6 +1,28 @@
 # 🧠 Resume Analyzer
 
 An AI-powered resume analyzer built with **LangGraph** and **Next.js**.
+## Screenshots
+
+### Home Page
+![Home Page](screenshots/demo.png)
+
+### Results - Score Meter
+![Score Meter](screenshots/demoo.png)
+
+### Results - Analysis Tab
+![Analysis](screenshots/demo1.png)
+
+### Results - Gaps Tab
+![Gaps](screenshots/demo2.png)
+
+### Results - Enhanced Resume Tab
+![Enhanced Resume](screenshots/demo3.png)
+
+### Results - Job Listings Tab
+![Job Listings](screenshots/demo4.png)
+
+### Results - Past Analyses Tab
+![Past Analyses](screenshots/demo5.png)
 
 ## What it does
 
