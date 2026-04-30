@@ -1,4 +1,4 @@
-# 🧠 Resume Analyzer
+# Agentic AI Resume Analyzer with LangGraph
 
 An AI-powered resume analyzer built with **LangGraph** and **Next.js**.
 ## Screenshots
