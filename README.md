@@ -1,6 +1,6 @@
 # Agentic AI Resume Analyzer with LangGraph
 
-An AI-powered resume analyzer built with **LangGraph** and **Next.js**.
+An end-to-end AI system that analyzes, improves, and matches resumes to job descriptions using Agentic workflows.
 ## Screenshots
 
 ### Home Page
